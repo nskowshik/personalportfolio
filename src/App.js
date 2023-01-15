@@ -1,9 +1,13 @@
 import React from 'react';
+import {Intro} from './pages'
+import './App.scss'
 
-export default function App () {
+export default function App() {
   return(
     <>
-      <p>Hello</p>
+      <div className="home">
+        <Intro />
+      </div>
     </>
   )
 }

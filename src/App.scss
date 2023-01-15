@@ -1,0 +1,32 @@
+body{
+  height: 100%;
+  width:100%;
+  margin: 0;
+  color: white;
+  line-height: 1.2;
+  font-family: "Gill Sans", sans-serif;
+}
+.fx{
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 800px) {
+  .fx {
+    flex-direction: column;
+  }
+}
+.fx2{
+  flex: 2 2;
+}
+.actr{
+  display: flex;
+  align-items: center;
+}
+.jctr{
+  display: flex;
+  justify-content: center;
+}
+.home{
+  height: 100vh;
+  background: black;
+}
