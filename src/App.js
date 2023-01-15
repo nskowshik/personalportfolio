@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const App = () => {
+export default function App () {
   return(
     <>
-      <p>Hello</>
+      <p>Hello</p>
     </>
   )
 }
