@@ -2,7 +2,7 @@
   "name": "personalportfolio",
   "version": "1.0.0",
   "description": "Personal porfolio",
-  "homepage": "./",
+  "homepage": "https://github.com/nskowshik/personalportfolio#readme",
   "private": "true",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/nskowshik/personalportfolio/issues"
   },
-  "homepage": "https://github.com/nskowshik/personalportfolio#readme",
   "dependencies": {
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
@@ -33,6 +32,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^9.1.2",
     "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "csv-loader": "^3.0.5",
     "file-loader": "^6.2.0",
