@@ -1,3 +1,4 @@
 import TextStyle from './TextStyle'
+import SVGIcon from './SVGIcon'
 
-export { TextStyle }
+export { TextStyle, SVGIcon }
