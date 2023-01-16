@@ -18,6 +18,15 @@ body{
 .fx2{
   flex: 2 2;
 }
+.mx40{
+  margin: 0px 40px;
+}
+.px20{
+  padding: 0px 20px;
+}
+.px40{
+  padding: 0px 40px;
+}
 .actr{
   display: flex;
   align-items: center;
@@ -26,7 +35,17 @@ body{
   display: flex;
   justify-content: center;
 }
+.jend{
+  justify-content: flex-end;
+}
 .home{
-  height: 100vh;
+  height: 100%;
   background: black;
+  padding: 20px 40px;
+}
+.mediaIcon{
+  img{
+    width: 20px;
+    height: 20px;
+  }
 }
