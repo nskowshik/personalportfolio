@@ -1,0 +1,13 @@
+.navigation-container{
+  display: flex;
+  list-style: none;
+}
+.navigation-items{
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0px 5px;
+}
+.hover-action:hover{
+  background: #ffffff4d;
+}
