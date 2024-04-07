@@ -1,5 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root{
+  height: 100%;
+}
+
 body{
   height: 100%;
+  background: black;
   width:100%;
   margin: 0;
   color: white;
@@ -8,18 +17,18 @@ body{
 }
 .fx{
   display: flex;
-  flex-direction: row;
-}
-@media (max-width: 800px) {
-  .fx {
-    flex-direction: column;
-  }
 }
 .fx2{
   flex: 2 2;
 }
+.m10{
+  margin: 10px
+}
 .mx40{
   margin: 0px 40px;
+}
+.my20{
+  margin: 20px 0px;
 }
 .px20{
   padding: 0px 20px;
@@ -40,7 +49,6 @@ body{
 }
 .home{
   height: 100%;
-  background: black;
   padding: 20px 40px;
 }
 .mediaIcon{
