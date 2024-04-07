@@ -8,7 +8,7 @@ const CardWrapper = styled.div`
   height: 250px;
   margin: 10px;
   border-radius: 10px;
-  padding: 20px 30px;
+  padding: 20px 40px;
   &:hover{
     box-shadow: #7979791f 8px 8px;
     transition: transform 0.3s;
@@ -24,7 +24,7 @@ const CardWrapper = styled.div`
 `
 const Careers = () => {
   return(
-    <div className="mx40">
+    <div className="mx40 my20">
       <TextStyle className="px20" size="32">Careers</TextStyle>
       <div className="fx jctr">
         {WORK_EXPERIANCE.map(el => {
