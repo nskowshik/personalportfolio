@@ -1,7 +1,6 @@
 import React from 'react';
 import {SVGIcon} from '../components';
 import { ReactSVG } from 'react-svg'
-import styled from 'styled-components';
 
 const Footer = () => {
   const media= [
