@@ -6,7 +6,7 @@ const Intro = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <img
-        src="/image/kowshik_2025.png"
+        src="https://res.cloudinary.com/dhvxpmkin/image/upload/v1764416255/kowshik_2025_lupch5.png"
         alt="Kowshik Sudarsan"
         width={250}
         height={250}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Intro, Footer, Careers, Toolbar } from "./pages";
-import { ScrollArrow } from "./components";
+import {  ScrollArrow } from "./components";
 import { PAGES } from "./constants";
 import "./App.scss";
 import "./index.css";
@@ -60,9 +60,9 @@ export default function App() {
       <div className="home">
         <ScrollArrow {...getArrowProps()} />
         {PAGES.map((page) => (
-          <div key={page.id} id={page.id} className="center-page relative">
-            {React.createElement(pageComponents[page.name])}
-          </div>
+            <div key={page.id} id={page.id} className="center-page relative">
+              {React.createElement(pageComponents[page.name])}
+            </div>
         ))}
       </div>
     </>

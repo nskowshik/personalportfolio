@@ -29,7 +29,7 @@ const WORK_EXPERIANCE = [
     endDate: null,
     isPresent: true,
     logo: {
-      url: "/image/superops.png",
+      url: "https://res.cloudinary.com/dhvxpmkin/image/upload/v1764416468/superops_gxmtj9.png",
       width: "50px",
       height: "50px"
     },
@@ -42,7 +42,7 @@ const WORK_EXPERIANCE = [
     endDate: "29 Jan 2022",
     isPresent: false,
     logo: {
-      url: "/image/gove.png",
+      url: "https://res.cloudinary.com/dhvxpmkin/image/upload/v1764416468/gove_ftej6j.png",
       width: "70px",
       height: "45px"
     },
