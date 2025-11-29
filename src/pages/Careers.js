@@ -7,10 +7,10 @@ const Careers = () => {
 
   return (
     <div className="w-full h-full flex justify-center items-center px-20">
-      <div className="grid md:grid-cols-2 gap-8 items-center w-full max-w-6xl bg-gray-900/50 p-40 rounded-xl">
+      <div className="grid md:grid-cols-2 gap-8 items-center w-full max-w-6xl bg-gray-900/50 px-20 py-[120px] rounded-xl">
         <div className="md:col-span-1 w-3/4">
           <TextStyle size="42" className="font-bold">
-            I've worked with the likes of:
+            I've extensive experience working with
           </TextStyle>
         </div>
         <div className="w-full">
