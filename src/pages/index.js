@@ -1,10 +1,10 @@
 import Intro from './Intro'
-import Toolbar from './Toolbar'
 import Footer from './Footer'
 import Careers from './Careers'
+import Toolbar from './Toolbar'
 export {
   Intro,
-  Toolbar,
   Careers,
+  Toolbar,
   Footer
 }

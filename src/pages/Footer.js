@@ -1,7 +1,6 @@
 import React from 'react';
 import {SVGIcon} from '../components';
 import { ReactSVG } from 'react-svg'
-import styled from 'styled-components';
 
 const Footer = () => {
   const media= [
@@ -31,7 +30,7 @@ const Footer = () => {
     }
   ]
   return(
-    <div className="fx jctr">
+    <div className="w-full h-full flex justify-center items-center">
       <ul className="navigation-container">
         {media.map(el => {
           return(
