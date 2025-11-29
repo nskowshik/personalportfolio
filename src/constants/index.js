@@ -3,6 +3,24 @@ const PROFILE_INFO = {
   about: "An entusiastic frontend developer, Electrical engineering graduate. Passionated in developing modularised code. Connect to discuss, ready to learn more together..."
 }
 
+const PAGES = [
+  {
+    name: "Intro",
+    id: "intro",
+    direction: "down"
+  },
+  {
+    name: "Careers",
+    id: "careers",
+    direction: "down"
+  },
+  {
+    name: "Footer",
+    id: "footer",
+    direction: "up"
+  }
+]
+
 const WORK_EXPERIANCE = [
   {
     companyName: "Superops.ai",
@@ -34,5 +52,6 @@ const WORK_EXPERIANCE = [
 
 export {
   PROFILE_INFO,
-  WORK_EXPERIANCE
+  WORK_EXPERIANCE,
+  PAGES
 }
