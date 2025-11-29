@@ -58,12 +58,12 @@ export default function App() {
     <>
       <Toolbar />
       <div className="home">
+        <ScrollArrow {...getArrowProps()} />
         {PAGES.map((page) => (
           <div key={page.id} id={page.id} className="center-page relative">
             {React.createElement(pageComponents[page.name])}
           </div>
         ))}
-        <ScrollArrow {...getArrowProps()} />
       </div>
     </>
   );
