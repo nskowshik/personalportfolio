@@ -4,14 +4,14 @@ import { TextStyle } from '../components'
 
 const Careers = () => {
   return(
-    <div className="mx40 my20">
+    <div className="w-full h-full flex flex-col justify-center items-center">
       <TextStyle className="px20" size="32">Careers</TextStyle>
-      <div className="fx jctr">
+      <div className="flex jctr">
         {WORK_EXPERIANCE.map(el => {
           return(
-            <div className="fx2">
-              <div className="fx">
-                <div className="fx2 actr companyName">{el.companyName}</div>
+            <div className="flex2">
+              <div className="flex">
+                <div className="flex2 actr companyName">{el.companyName}</div>
                 <img src={el?.logo?.url} width={el?.logo?.width} height={el?.logo?.height} />
               </div>
               <p>{el.startDate} - {el.endDate || el.isPresent && "Present"}</p>
