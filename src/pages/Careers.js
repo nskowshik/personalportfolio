@@ -1,26 +1,59 @@
-import React from 'react';
-import { WORK_EXPERIANCE } from '../constants'
-import { TextStyle } from '../components'
+import React, { useState } from "react";
+import { WORK_EXPERIANCE } from "../constants";
+import { TextStyle } from "../components";
 
 const Careers = () => {
-  return(
-    <div className="w-full h-full flex flex-col justify-center items-center">
-      <TextStyle className="px20" size="32">Careers</TextStyle>
-      <div className="flex jctr">
-        {WORK_EXPERIANCE.map(el => {
-          return(
-            <div className="flex2">
-              <div className="flex">
-                <div className="flex2 actr companyName">{el.companyName}</div>
-                <img src={el?.logo?.url} width={el?.logo?.width} height={el?.logo?.height} />
+  const [hoveredCompany, setHoveredCompany] = useState(null);
+
+  return (
+    <div className="w-full h-full flex justify-center items-center px-20">
+      <div className="grid md:grid-cols-2 gap-8 items-center w-full max-w-6xl bg-gray-900/50 p-40 rounded-xl">
+        <div className="md:col-span-1 w-3/4">
+          <TextStyle size="42" className="font-bold">
+            I've worked with the likes of:
+          </TextStyle>
+        </div>
+        <div className="w-full">
+          <div className="md:col-span-2 grid grid-cols-2 gap-x-8 gap-y-12">
+            {WORK_EXPERIANCE.map((el) => (
+              <div
+                key={el.companyName}
+                className="relative flex flex-col justify-center items-center h-24 w-40"
+                onMouseEnter={() => setHoveredCompany(el.companyName)}
+                onMouseLeave={() => setHoveredCompany(null)}
+              >
+                <img
+                  src={el.logo.url}
+                  alt={el.companyName}
+                  className={`max-h-16 w-auto object-contain transition-all duration-300 ease-in-out ${
+                    hoveredCompany === el.companyName || el.isPresent ? "" : "grayscale"
+                  }`}
+                />
+                {el.isPresent && (
+                  <span className="bg-green-700 text-xs font-bold px-2 py-0.5 rounded-full animate-pulse">
+                    Present
+                  </span>
+                )}
+                {hoveredCompany === el.companyName && (
+                  <div className="z-10 flex flex-col justify-center items-center bg-black bg-opacity-80 rounded-lg p-2">
+                    <div className="flex items-center justify-center gap-2">
+                      <p className="font-semibold text-sm text-white">
+                        {el.companyName}
+                      </p>
+                    </div>
+                    <p className="text-xs text-gray-300 mt-1">
+                      {el.startDate} -{" "}
+                      {el.endDate || (el.isPresent && "Present")}
+                    </p>
+                  </div>
+                )}
               </div>
-              <p>{el.startDate} - {el.endDate || el.isPresent && "Present"}</p>
-            </div>
-          )
-        })}
+            ))}
+          </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Careers
+export default Careers;

@@ -30,7 +30,7 @@ const Footer = () => {
     }
   ]
   return(
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center px-20">
       <ul className="flex gap-4 navigation-container">
         {media.map(el => {
           return(
