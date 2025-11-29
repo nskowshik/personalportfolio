@@ -16,7 +16,7 @@ const ScrollArrow = ({ targetId, direction = 'down' }) => {
   return (
     <a 
       href={`#${targetId}`}
-      className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce z-10"
+      className="absolute bottom-4 left-1/2 -translate-x-1/2 text-cyan-500 hover:text-cyan-500 animate-bounce z-10"
     >
       {arrowIcon}
     </a>
