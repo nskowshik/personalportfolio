@@ -1,19 +1,20 @@
 import React from "react";
-import { Intro, Footer, Careers } from "./pages";
+import { Intro, Footer, Careers, Toolbar } from "./pages";
 import "./App.scss";
 import "./index.css";
 
 export default function App() {
   return (
     <>
+      <Toolbar />
       <div className="home">
-        <div className="center-page">
+        <div id="intro" className="center-page">
           <Intro />
         </div>
-        <div className="center-page">
+        <div id="careers" className="center-page">
           <Careers />
         </div>
-        <div className="center-page">
+        <div id="footer" className="center-page">
           <Footer />
         </div>
       </div>
