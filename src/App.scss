@@ -53,14 +53,12 @@ body{
 .jend{
   justify-content: flex-end;
 }
-html {
-  scroll-behavior: smooth;
-}
 
 .home{
   height: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .mediaIcon{
