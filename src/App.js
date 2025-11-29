@@ -1,16 +1,21 @@
-import React from 'react';
-import { Intro, Toolbar, Footer, Careers } from './pages'
-import './App.scss'
+import React from "react";
+import { Intro, Toolbar, Footer, Careers } from "./pages";
+import "./App.scss";
 
 export default function App() {
-  return(
+  return (
     <>
       <div className="home">
-        <Toolbar items={['Experience','Skill', 'Contact']} />
-        <Intro />
-        <Careers />
-        <Footer />
+        <div className="center-page">
+          <Intro />
+        </div>
+        <div className="center-page">
+          <Careers />
+        </div>
+        <div className="center-page">
+          <Footer />
+        </div>
       </div>
     </>
-  )
+  );
 }

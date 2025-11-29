@@ -30,7 +30,7 @@ const Footer = () => {
     }
   ]
   return(
-    <div className="fx jctr">
+    <div className="w-full h-full flex justify-center items-center">
       <ul className="navigation-container">
         {media.map(el => {
           return(
