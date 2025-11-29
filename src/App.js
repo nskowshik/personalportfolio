@@ -1,6 +1,7 @@
 import React from "react";
-import { Intro, Toolbar, Footer, Careers } from "./pages";
+import { Intro, Footer, Careers } from "./pages";
 import "./App.scss";
+import "./index.css";
 
 export default function App() {
   return (
