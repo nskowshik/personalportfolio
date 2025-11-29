@@ -1,76 +1,92 @@
-
-#root{
+#root {
   position: relative;
   z-index: 1;
   height: 100%;
+
+  // Add smooth fade-up animation to direct child elements
+  > * {
+    animation: fadeInUp 1s ease-out forwards;
+  }
 }
 
-body{
+// Keyframes animation for fade-up effect
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
   height: 100%;
   background: black;
-  width:100%;
+  width: 100%;
   margin: 0;
   color: white;
   line-height: 1.2;
   font-family: "Gill Sans", sans-serif;
 }
 
-.full-height{
+.full-height {
   height: 100%;
 }
 
-.full-width{
+.full-width {
   width: 100%;
-} 
+}
 
-.flex{
+.flex {
   display: flex;
 }
-.flex2{
+.flex2 {
   flex: 2 2;
 }
-.m10{
-  margin: 10px
+.m10 {
+  margin: 10px;
 }
-.mx40{
+.mx40 {
   margin: 0px 40px;
 }
-.my20{
+.my20 {
   margin: 20px 0px;
 }
-.px20{
+.px20 {
   padding: 0px 20px;
 }
-.px40{
+.px40 {
   padding: 0px 40px;
 }
-.actr{
+.actr {
   display: flex;
   align-items: center;
 }
-.jctr{
+.jctr {
   display: flex;
   justify-content: center;
 }
-.jend{
+.jend {
   justify-content: flex-end;
 }
 
-.home{
+.home {
   height: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
 
-.mediaIcon{
-  img{
+.mediaIcon {
+  img {
     width: 20px;
     height: 20px;
   }
 }
 
-.center-page{
+.center-page {
   height: 100vh;
   scroll-snap-align: start;
   display: flex;
