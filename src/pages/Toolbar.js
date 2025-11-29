@@ -1,18 +1,17 @@
-import React from 'react';
+import React from "react";
+import { PAGES } from "../constants";
 
 const Toolbar = () => {
-  const pages = ['Intro', 'Careers', 'Footer'];
-
   return (
-    <div className="fixed top-4 right-4 p-2 rounded-lg shadow-lg">
+    <div className="fixed top-4 right-4 p-2 rounded-lg shadow-lg z-50">
       <ul className="flex space-x-4">
-        {pages.map(page => (
-          <li key={page}>
-            <a 
-              href={`#${page.toLowerCase()}`}
+        {PAGES.map((page) => (
+          <li key={page.id}>
+            <a
+              href={`#${page.id}`}
               className="text-white hover:text-gray-300 transition-colors duration-300 font-semibold tracking-wider"
             >
-              {page}
+              {page.name}
             </a>
           </li>
         ))}

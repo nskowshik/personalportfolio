@@ -12,41 +12,44 @@ const pageComponents = {
 };
 
 export default function App() {
-  const [currentSection, setCurrentSection] = useState('intro');
+  const [currentSection, setCurrentSection] = useState("intro");
   useEffect(() => {
     const observerOptions = {
-      root: document.querySelector('.home'),
-      rootMargin: '0px',
+      root: document.querySelector(".home"),
+      rootMargin: "0px",
       threshold: 0.5,
     };
 
     const observerCallback = (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setCurrentSection(entry.target.id);
         }
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = document.querySelectorAll('.center-page');
-    sections.forEach(section => observer.observe(section));
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+    const sections = document.querySelectorAll(".center-page");
+    sections.forEach((section) => observer.observe(section));
 
     return () => {
-      sections.forEach(section => observer.unobserve(section));
+      sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
 
   const getArrowProps = () => {
-    const currentIndex = PAGES.findIndex(p => p.id === currentSection);
+    const currentIndex = PAGES.findIndex((p) => p.id === currentSection);
     if (currentIndex === -1) return {};
 
     const nextIndex = (currentIndex + 1) % PAGES.length;
     const targetPage = PAGES[nextIndex];
 
     // Use the last page's direction for the wrap-around
-    const direction = currentIndex === PAGES.length - 1 ? 'up' : 'down';
-    const targetId = direction === 'up' ? PAGES[0].id : targetPage.id;
+    const direction = currentIndex === PAGES.length - 1 ? "up" : "down";
+    const targetId = direction === "up" ? PAGES[0].id : targetPage.id;
 
     return { targetId, direction };
   };
