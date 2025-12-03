@@ -1,17 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { WORK_EXPERIANCE } from "../constants";
 import { TextStyle } from "../components";
 
 const Careers = () => {
   const [hoveredCompany, setHoveredCompany] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Once visible, stop observing
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 } // 20% of the section needs to be visible
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <div className="w-full h-full flex justify-center items-center px-20">
+    <div ref={sectionRef} className="w-full h-full flex justify-center items-center px-20">
       <div className="grid md:grid-cols-2 gap-8 items-center w-full max-w-6xl bg-gray-900/50 px-20 py-[120px] rounded-xl">
-        <div className="md:col-span-1 ">
-          <TextStyle size="42" className="font-bold">
-            I've extensive experience working with
-          </TextStyle>
+        <div className="md:col-span-1 overflow-hidden">
+          <div className="flex flex-wrap">
+            {['I\'ve', 'extensive', 'experience', 'working', 'with'].map((word, index) => (
+              <div 
+                key={index}
+                className={`fade-in-left mr-3 ${isVisible ? 'visible' : ''}`}
+                style={{ 
+                  transitionDelay: `${0.1 + index * 0.15}s`
+                }}
+              >
+                <TextStyle size="42" className="font-bold">
+                  {word}
+                </TextStyle>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="w-full">
           <div className="md:col-span-2 grid grid-cols-2 gap-x-8 gap-y-12">
