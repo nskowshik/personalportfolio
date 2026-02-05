@@ -5,22 +5,23 @@ const technicalSkills = [
   { name: "React.js", level: 95, emoji: "⚛️", color: "primary" },
   { name: "TypeScript", level: 90, emoji: "📘", color: "secondary" },
   { name: "JavaScript", level: 95, emoji: "💛", color: "yellow" },
-  { name: "Redux", level: 88, emoji: "🔄", color: "primary" },
+  { name: "State management", level: 88, emoji: "🔄", color: "primary" },
   { name: "HTML5/CSS3", level: 92, emoji: "🎨", color: "accent" },
   { name: "Node.js", level: 75, emoji: "💚", color: "green" },
   { name: "REST APIs", level: 85, emoji: "🔌", color: "pink" },
-  { name: "PostgreSQL", level: 70, emoji: "🐘", color: "secondary" },
+  { name: "CI/CD", level: 70, emoji: "🐘", color: "secondary" },
 ];
 
 const relevantSkills = [
+  { name: "Vibe Coding", emoji: "🤖" },
   { name: "Component Architecture", emoji: "🏗️" },
   { name: "Design Systems", emoji: "🎯" },
   { name: "Performance Optimization", emoji: "⚡" },
-  { name: "Code Review", emoji: "👀" },
   { name: "Team Mentoring", emoji: "🧑‍🏫" },
+  { name: "Code Review", emoji: "👀" },
   { name: "Agile/Scrum", emoji: "📊" },
   { name: "Git/Version Control", emoji: "🌿" },
-  { name: "Testing (Jest/RTL)", emoji: "🧪" },
+  
 ];
 
 const SkillBar = ({ skill, index }: { skill: typeof technicalSkills[0]; index: number }) => (
