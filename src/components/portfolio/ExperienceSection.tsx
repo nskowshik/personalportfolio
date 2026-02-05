@@ -11,13 +11,20 @@ import {
 
 const experiences = [
   {
-    company: "Superops.ai",
-    role: "Senior Member of Technical Staff",
-    period: "Jan 2023 - Present",
+    company: "SuperOps",
+    role: "Senior Frontend Engineer",
+    period: "Jan 2024 - Present",
     location: "Chennai, India",
     emoji: "🚀",
     color: "primary",
-    techStack: ["React.js", "TypeScript", "Redux", "Node.js", "REST APIs", "PostgreSQL"],
+    techStack: [
+      "React.js",
+      "TypeScript",
+      "Redux",
+      "Node.js",
+      "REST APIs",
+      "PostgreSQL",
+    ],
     achievements: [
       "Architected component library with 150+ reusable components adopted by 4 teams (50+ engineers)",
       "Built rich text editor with bullet lists, headings, tables, and embedded content",
@@ -28,9 +35,9 @@ const experiences = [
     ],
   },
   {
-    company: "Superops.ai",
-    role: "Software Engineer",
-    period: "Jan 2021 - Dec 2022",
+    company: "SuperOps",
+    role: "Frontend Engineer",
+    period: "Feb 2022 - Jan 2024",
     location: "Chennai, India",
     emoji: "💻",
     color: "secondary",
@@ -44,8 +51,8 @@ const experiences = [
   {
     company: "Gove Enterprises",
     role: "Software Engineer",
-    period: "Oct 2019 - Dec 2020",
-    location: "Chennai, India",
+    period: "May 2020 - Feb 2022",
+    location: "Tirunelveli, India",
     emoji: "🌱",
     color: "accent",
     techStack: ["React.js", "JavaScript", "REST APIs", "CSS"],
@@ -89,32 +96,38 @@ const ExperienceSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               className={`relative mb-12 ${
-                index % 2 === 0 ? "md:pr-[50%] md:text-right" : "md:pl-[50%] md:ml-auto"
+                index % 2 === 0
+                  ? "md:pr-[50%] md:text-right"
+                  : "md:pl-[50%] md:ml-auto"
               }`}
             >
               {/* Timeline dot */}
               <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10" />
 
               {/* Content card */}
-              <Card className={`ml-16 md:ml-0 glass hover-lift ${index % 2 === 0 ? "md:mr-8" : "md:ml-8"}`}>
+              <Card
+                className={`ml-16 md:ml-0 glass hover-lift ${index % 2 === 0 ? "md:mr-8" : "md:ml-8"}`}
+              >
                 <CardHeader className="pb-2">
-                  <div className={`flex items-start gap-3 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                    <span className="text-3xl">{exp.emoji}</span>
+                  <div
+                    className={`flex items-start gap-3 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                  >
+                    <span className="text-3xl self-center">{exp.emoji}</span>
                     <div className={index % 2 === 0 ? "md:text-right" : ""}>
                       <CardTitle className="text-xl">{exp.role}</CardTitle>
-                      <div className="flex items-center gap-2 text-muted-foreground mt-1 flex-wrap">
+                      <div className="flex items-center gap-1 text-muted-foreground mt-1 flex-wrap">
                         <Building2 className="w-4 h-4" />
                         <span className="font-medium">{exp.company}</span>
-                        <span>•</span>
-                        <Calendar className="w-4 h-4" />
-                        <span>{exp.period}</span>
+                        <span>({exp.period})</span>
                       </div>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
                   {/* Tech stack */}
-                  <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
+                  <div
+                    className={`flex flex-wrap gap-2 pt-2 mb-4 ${index % 2 === 0 ? "md:justify-end" : ""}`}
+                  >
                     {exp.techStack.map((tech) => (
                       <Badge key={tech} variant="secondary" className="text-xs">
                         {tech}
@@ -123,18 +136,24 @@ const ExperienceSection = () => {
                   </div>
 
                   {/* Achievements accordion */}
-                  <Accordion type="single" collapsible>
+                  <Accordion type="single" collapsible >
                     <AccordionItem value="achievements" className="border-none">
-                      <AccordionTrigger className={`text-sm font-medium ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                      <AccordionTrigger
+                        className={`text-sm font-medium ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                      >
                         <span className="flex items-center gap-1">
-                          <ChevronRight className="w-4 h-4" />
                           Key Achievements
                         </span>
                       </AccordionTrigger>
                       <AccordionContent>
-                        <ul className={`space-y-2 ${index % 2 === 0 ? "md:text-right" : ""}`}>
+                        <ul
+                          className={`space-y-2 ${index % 2 === 0 ? "md:text-right" : ""}`}
+                        >
                           {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                            <li
+                              key={i}
+                              className="text-sm text-muted-foreground flex items-start gap-2"
+                            >
                               <span className="text-primary">✓</span>
                               <span>{achievement}</span>
                             </li>

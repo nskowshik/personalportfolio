@@ -5,8 +5,8 @@ import { GraduationCap, Heart, MapPin, Briefcase } from "lucide-react";
 const funFacts = [
   { emoji: "🎓", text: "B.E. in Electrical Engineering from Anna University" },
   { emoji: "💼", text: "5+ years building scalable React applications" },
-  { emoji: "🏗️", text: "Architected component libraries used by 50+ engineers" },
-  { emoji: "🎨", text: "Passionate about pixel-perfect UI & great DX" },
+  { emoji: "🏗️", text: "Architected component libraries used in multiple products" },
+  { emoji: "🎨", text: "Passionate about solving complex problems with elegant solutions" },
   { emoji: "🧘", text: "Mindfulness enthusiast & mentor" },
 ];
 
@@ -42,7 +42,7 @@ const AboutSection = () => {
                 <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
                   {/* Avatar placeholder */}
                   <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary via-pink to-accent flex items-center justify-center text-5xl flex-shrink-0 animate-pulse-glow">
-                    🧑‍💻
+                    <img src="/profile.png" alt="Kowshik Sudarsan" className="w-[85%] h-[85%] rounded-full object-cover" />
                   </div>
                   
                   <div>
@@ -88,7 +88,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold mb-6">Fun Facts ✨</h3>
+            <h3 className="text-2xl font-bold mb-4">Fun Facts ✨</h3>
             {funFacts.map((fact, index) => (
               <motion.div
                 key={index}
@@ -99,7 +99,7 @@ const AboutSection = () => {
                 className="flex items-start gap-4 p-4 rounded-xl glass hover-lift cursor-default"
               >
                 <span className="text-2xl flex-shrink-0">{fact.emoji}</span>
-                <p className="text-foreground">{fact.text}</p>
+                <p className="text-foreground self-center">{fact.text}</p>
               </motion.div>
             ))}
           </motion.div>

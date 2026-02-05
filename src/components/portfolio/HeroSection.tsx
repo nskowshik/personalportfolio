@@ -102,7 +102,7 @@ const HeroSection = () => {
             transition={{ delay: 0.8 }}
           >
             Crafting delightful web experiences with <span className="text-primary font-semibold">React</span>, 
-            <span className="text-secondary font-semibold"> TypeScript</span>, and a sprinkle of ✨ magic for 5+ years
+            <span className="text-secondary font-semibold"> TypeScript</span>, and a sprinkle of ✨ magic for 5+ years in Software Development
           </motion.p>
 
           <motion.div 
