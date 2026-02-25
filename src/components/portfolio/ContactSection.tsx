@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Linkedin, Github, MapPin, Send } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, MapPin, Send,Code } from "lucide-react";
 
 const contactInfo = [
   {
@@ -14,24 +14,31 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 98765 43210",
-    href: "tel:+919876543210",
+    value: "+91 81245 47978",
+    href: "tel:+918124547978",
     color: "secondary",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "Connect with me",
-    href: "https://linkedin.com/in/kowshiksudarsan",
+    href: "https://linkedin.com/in/kowshik-n-s-82b530161",
     color: "accent",
   },
   {
     icon: Github,
     label: "GitHub",
     value: "Check my repos",
-    href: "https://github.com/kowshiksudarsan",
+    href: "https://github.com/nskowshik",
     color: "pink",
   },
+  {
+    icon: Code,
+    label: "LeetCode",
+    value: "Check my solutions",
+    href: "https://leetcode.com/u/aathins5/",
+    color: "orange",
+  }
 ];
 
 const ContactSection = () => {
@@ -132,7 +139,7 @@ const ContactSection = () => {
                           size="icon" 
                           variant="outline" 
                           className="rounded-full hover-lift"
-                          onClick={() => window.open("https://linkedin.com/in/kowshiksudarsan", "_blank")}
+                          onClick={() => window.open("https://www.linkedin.com/in/kowshik-n-s-82b530161", "_blank")}
                         >
                           <Linkedin className="w-5 h-5" />
                         </Button>
@@ -140,7 +147,7 @@ const ContactSection = () => {
                           size="icon" 
                           variant="outline" 
                           className="rounded-full hover-lift"
-                          onClick={() => window.open("https://github.com/kowshiksudarsan", "_blank")}
+                          onClick={() => window.open("https://github.com/nskowshik", "_blank")}
                         >
                           <Github className="w-5 h-5" />
                         </Button>
@@ -162,7 +169,7 @@ const ContactSection = () => {
           className="text-center mt-16 text-muted-foreground"
         >
           <p className="text-sm">
-            Built with 💜 using React & TypeScript • © 2024 Kowshik Sudarsan
+            Built with 💜 using React & TypeScript • © 2025 Kowshik Sudarsan
           </p>
         </motion.div>
       </div>

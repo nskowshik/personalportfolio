@@ -1,6 +1,4 @@
 node_modules
-supabase/config.toml
 .env
 .env.local
-config.toml
 dist

@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 import { Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react";
 
 const Auth = () => {
@@ -23,35 +22,12 @@ const Auth = () => {
     setIsLoading(true);
 
     try {
-      if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (error) throw error;
-
-        toast({
-          title: "Welcome back! 👋",
-          description: "Successfully logged in.",
-        });
-        navigate("/admin");
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/`,
-          },
-        });
-
-        if (error) throw error;
-
-        toast({
-          title: "Account created! 🎉",
-          description: "Please check your email to verify your account.",
-        });
-      }
+      toast({
+        variant: "destructive",
+        title: "Authentication Disabled",
+        description: "Authentication has been removed from this application.",
+      });
+      navigate("/");
     } catch (error: any) {
       toast({
         variant: "destructive",
