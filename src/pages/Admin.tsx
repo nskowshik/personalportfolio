@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Plus, 
@@ -29,7 +28,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import type { User } from "@supabase/supabase-js";
 
 interface BlogPost {
   id: string;
@@ -45,45 +43,20 @@ interface BlogPost {
 }
 
 const Admin = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<any>(null);
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
-    // Set up auth state listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-        if (!session?.user) {
-          navigate("/auth");
-        }
-      }
-    );
-
-    // Check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      if (!session?.user) {
-        navigate("/auth");
-      } else {
-        fetchPosts();
-      }
-    });
-
-    return () => subscription.unsubscribe();
+    setUser(null);
+    navigate("/");
   }, [navigate]);
 
   const fetchPosts = async () => {
     try {
-      const { data, error } = await supabase
-        .from("blog_posts")
-        .select("id, title, slug, excerpt, category, is_published, likes_count, reading_time, created_at, updated_at")
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      setPosts(data || []);
+      setPosts([]);
     } catch (error) {
       console.error("Error fetching posts:", error);
       toast({
@@ -97,66 +70,30 @@ const Admin = () => {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
     navigate("/");
   };
 
   const handleTogglePublish = async (post: BlogPost) => {
-    try {
-      const { error } = await supabase
-        .from("blog_posts")
-        .update({ 
-          is_published: !post.is_published,
-          published_at: !post.is_published ? new Date().toISOString() : null
-        })
-        .eq("id", post.id);
+    setPosts(posts.map(p => 
+      p.id === post.id 
+        ? { ...p, is_published: !p.is_published } 
+        : p
+    ));
 
-      if (error) throw error;
-
-      setPosts(posts.map(p => 
-        p.id === post.id 
-          ? { ...p, is_published: !p.is_published } 
-          : p
-      ));
-
-      toast({
-        title: post.is_published ? "Post unpublished 📦" : "Post published! 🎉",
-        description: post.is_published 
-          ? "The post is now hidden from public view." 
-          : "Your post is now live!",
-      });
-    } catch (error) {
-      console.error("Error updating post:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to update post status.",
-      });
-    }
+    toast({
+      title: post.is_published ? "Post unpublished 📦" : "Post published! 🎉",
+      description: post.is_published 
+        ? "The post is now hidden from public view." 
+        : "Your post is now live!",
+    });
   };
 
   const handleDelete = async (postId: string) => {
-    try {
-      const { error } = await supabase
-        .from("blog_posts")
-        .delete()
-        .eq("id", postId);
-
-      if (error) throw error;
-
-      setPosts(posts.filter(p => p.id !== postId));
-      toast({
-        title: "Post deleted 🗑️",
-        description: "The post has been permanently removed.",
-      });
-    } catch (error) {
-      console.error("Error deleting post:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to delete post.",
-      });
-    }
+    setPosts(posts.filter(p => p.id !== postId));
+    toast({
+      title: "Post deleted 🗑️",
+      description: "The post has been permanently removed.",
+    });
   };
 
   const formatDate = (dateString: string) => {

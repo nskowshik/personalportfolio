@@ -5,9 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, Search, Clock, Heart, Calendar, Tag } from "lucide-react";
 import Navigation from "@/components/portfolio/Navigation";
+import { fetchMediumPosts } from "@/integrations/medium";
 
 interface BlogPost {
   id: string;
@@ -35,14 +35,8 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const { data, error } = await supabase
-        .from("blog_posts")
-        .select("id, title, slug, excerpt, cover_image_url, category, tags, reading_time, likes_count, published_at, created_at")
-        .eq("is_published", true)
-        .order("published_at", { ascending: false });
-
-      if (error) throw error;
-      setPosts(data || []);
+      const mediumPosts = await fetchMediumPosts();
+      setPosts(mediumPosts);
     } catch (error) {
       console.error("Error fetching posts:", error);
     } finally {
@@ -107,25 +101,6 @@ const Blog = () => {
                   className="pl-10"
                 />
               </div>
-              <div className="flex gap-2 flex-wrap">
-                <Button
-                  variant={selectedCategory === null ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedCategory(null)}
-                >
-                  All
-                </Button>
-                {categories.map((category) => (
-                  <Button
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedCategory(category as string)}
-                  >
-                    {category}
-                  </Button>
-                ))}
-              </div>
             </div>
           </motion.div>
 
@@ -165,7 +140,7 @@ const Blog = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link to={`/blog/${post.slug}`}>
+                  <a href={`https://medium.com/@aathins5/${post.slug}`} target="_blank" rel="noopener noreferrer">
                     <Card className="glass hover-lift h-full group overflow-hidden">
                       {/* Cover image or placeholder */}
                       <div className="h-48 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20 flex items-center justify-center overflow-hidden">
@@ -177,7 +152,7 @@ const Blog = () => {
                           />
                         ) : (
                           <span className="text-5xl group-hover:scale-110 transition-transform">
-                            📄
+                            <img src="/Blog.png" alt={post.title} />
                           </span>
                         )}
                       </div>
@@ -204,10 +179,6 @@ const Blog = () => {
                             <Clock className="w-4 h-4" />
                             {post.reading_time || 1} min
                           </span>
-                          <span className="flex items-center gap-1">
-                            <Heart className="w-4 h-4" />
-                            {post.likes_count || 0}
-                          </span>
                         </div>
                         {post.tags && post.tags.length > 0 && (
                           <div className="flex flex-wrap gap-1 mt-3">
@@ -223,7 +194,7 @@ const Blog = () => {
                         )}
                       </CardContent>
                     </Card>
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
             </div>

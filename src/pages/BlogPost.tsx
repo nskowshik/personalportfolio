@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, Clock, Calendar, Heart, Share2, Tag } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { fetchMediumPosts } from "@/integrations/medium";
 import Navigation from "@/components/portfolio/Navigation";
 
 interface BlogPost {
@@ -32,30 +32,14 @@ const BlogPost = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (slug) {
       fetchPost();
-    }
-  }, [slug]);
+  }, []);
 
   const fetchPost = async () => {
     try {
-      const { data, error } = await supabase
-        .from("blog_posts")
-        .select("*")
-        .eq("slug", slug)
-        .eq("is_published", true)
-        .single();
-
-      if (error) throw error;
-      setPost(data);
-      setLikesCount(data.likes_count || 0);
-      
-      // Check if user has already liked
-      const likedPosts = localStorage.getItem("likedPosts");
-      if (likedPosts) {
-        const liked = JSON.parse(likedPosts);
-        setHasLiked(liked.includes(data.id));
-      }
+      const posts = await fetchMediumPosts();
+      const post = posts.find((post) => post.slug === slug);
+      setPost(post);
     } catch (error) {
       console.error("Error fetching post:", error);
     } finally {
@@ -66,49 +50,20 @@ const BlogPost = () => {
   const handleLike = async () => {
     if (!post || hasLiked) return;
 
-    try {
-      // Get a pseudo-IP based on session
-      const userIp = localStorage.getItem("userSessionId") || `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem("userSessionId", userIp);
-
-      const { error } = await supabase.from("blog_likes").insert({
-        post_id: post.id,
-        user_ip: userIp,
-      });
-
-      if (error) {
-        if (error.code === "23505") {
-          // Unique constraint violation - already liked
-          toast({
-            title: "Already liked! 💜",
-            description: "You've already shown your appreciation for this post.",
-          });
-          return;
-        }
-        throw error;
-      }
-
-      setHasLiked(true);
-      setLikesCount((prev) => prev + 1);
-      
-      // Save to local storage
+    setHasLiked(true);
+    setLikesCount((prev) => prev + 1);
+    
+    if (post) {
       const likedPosts = localStorage.getItem("likedPosts");
       const liked = likedPosts ? JSON.parse(likedPosts) : [];
       liked.push(post.id);
       localStorage.setItem("likedPosts", JSON.stringify(liked));
-
-      toast({
-        title: "Thanks for the love! 💜",
-        description: "Your appreciation means a lot!",
-      });
-    } catch (error) {
-      console.error("Error liking post:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to like the post. Please try again.",
-      });
     }
+
+    toast({
+      title: "Thanks for the love! 💜",
+      description: "Your appreciation means a lot!",
+    });
   };
 
   const handleShare = async () => {
@@ -237,7 +192,7 @@ const BlogPost = () => {
               className="mb-8 rounded-xl overflow-hidden"
             >
               <img
-                src={post.cover_image_url}
+                src={post.cover_image_url || '/Blog.png'}
                 alt={post.title}
                 className="w-full h-auto"
               />
