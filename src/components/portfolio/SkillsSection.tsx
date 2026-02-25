@@ -5,17 +5,17 @@ const technicalSkills = [
   { name: "React.js", level: 95, emoji: "⚛️", color: "primary" },
   { name: "TypeScript", level: 90, emoji: "📘", color: "secondary" },
   { name: "JavaScript", level: 95, emoji: "💛", color: "yellow" },
-  { name: "State management", level: 88, emoji: "🔄", color: "primary" },
-  { name: "HTML5/CSS3", level: 92, emoji: "🎨", color: "accent" },
-  { name: "Node.js", level: 75, emoji: "💚", color: "green" },
-  { name: "REST APIs", level: 85, emoji: "🔌", color: "pink" },
-  { name: "CI/CD", level: 70, emoji: "🐘", color: "secondary" },
+  { name: "State management", level: 78, emoji: "🔄", color: "primary" },
+  { name: "Node.js", level: 85, emoji: "💚", color: "green" },
+  { name: "REST APIs", level: 95, emoji: "🔌", color: "pink" },
+  { name: "Websocket", level: 85, emoji: "🌐", color: "blue" },
+  { name: "Svelte", level: 75, emoji: "💻", color: "orange" },
 ];
 
 const relevantSkills = [
   { name: "Vibe Coding", emoji: "🤖" },
   { name: "Component Architecture", emoji: "🏗️" },
-  { name: "Design Systems", emoji: "🎯" },
+  { name: "Solutioning", emoji: "🎯" },
   { name: "Performance Optimization", emoji: "⚡" },
   { name: "Team Mentoring", emoji: "🧑‍🏫" },
   { name: "Code Review", emoji: "👀" },
@@ -47,7 +47,10 @@ const SkillBar = ({ skill, index }: { skill: typeof technicalSkills[0]; index: n
           skill.color === "accent" ? "bg-accent" :
           skill.color === "yellow" ? "bg-yellow" :
           skill.color === "green" ? "bg-green" :
-          skill.color === "pink" ? "bg-pink" : "bg-primary"
+          skill.color === "pink" ? "bg-pink" :
+          skill.color === "blue" ? "bg-blue-400" :
+          skill.color === "orange" ? "bg-orange-500" :
+          "bg-primary"
         }`}
         initial={{ width: 0 }}
         whileInView={{ width: `${skill.level}%` }}
@@ -134,7 +137,7 @@ const SkillsSection = () => {
                 <div className="mt-8 pt-8 border-t border-border">
                   <h4 className="font-semibold mb-4 text-muted-foreground">Tools & Platforms</h4>
                   <div className="flex flex-wrap gap-2">
-                    {["VS Code", "GitHub", "Figma", "Jira", "Postman", "Chrome DevTools", "npm/yarn"].map((tool) => (
+                    {["Cursor","Windsurf", "GitHub", "Figma", "Linear","Slack", "Postman", "Proxyman", "npm/yarn"].map((tool) => (
                       <span
                         key={tool}
                         className="px-3 py-1 text-sm rounded-full bg-muted/50 text-muted-foreground"

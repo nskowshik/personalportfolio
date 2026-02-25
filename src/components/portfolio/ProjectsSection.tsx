@@ -10,8 +10,10 @@ const projects = [
     description: "A comprehensive library of 150+ reusable React components with TypeScript, Storybook documentation, and full accessibility support.",
     emoji: "📦",
     techStack: ["React", "TypeScript", "Storybook", "CSS Modules"],
-    highlights: ["150+ components", "Used by 50+ engineers", "Full a11y support"],
+    highlights: ["150+ components", "Used by 50+ engineers", "Shopify Polaris"],
     color: "primary",
+    github: undefined,
+    link: undefined,
   },
   {
     title: "Rich Text Editor",
@@ -20,30 +22,18 @@ const projects = [
     techStack: ["React", "Slate.js", "TypeScript", "Redux"],
     highlights: ["Real-time collaboration", "Custom plugins", "Export to HTML/MD"],
     color: "secondary",
+    github: "https://github.com/nskowshik/tiptap_editor",
+    link: "https://slasheditor.netlify.app/",
   },
   {
-    title: "Recurring Pattern Engine",
-    description: "Flexible scheduling system with customizable intervals, complex end conditions, and timezone-aware recurrence calculations.",
+    title: "Store Management System",
+    description: "A full-featured store management system with real-time inventory tracking, order management, and reporting capabilities.",
     emoji: "🔄",
-    techStack: ["React", "TypeScript", "date-fns", "RRule"],
-    highlights: ["Custom intervals", "Timezone support", "End conditions"],
+    techStack: ["Node JS", "MongoDB", "Express", "JWT"],
+    highlights: ["Inventory tracking", "Order management", "Customer details"],
     color: "accent",
-  },
-  {
-    title: "Dynamic Policy Builder",
-    description: "Visual rule builder with nested conditions, drag-and-drop interface, and data-driven configuration options.",
-    emoji: "🔧",
-    techStack: ["React", "DnD Kit", "TypeScript", "React Query"],
-    highlights: ["Nested conditions", "Drag & drop", "Real-time preview"],
-    color: "pink",
-  },
-  {
-    title: "Design System",
-    description: "Unified design language with tokens, components, patterns, and comprehensive documentation for consistent UI across products.",
-    emoji: "🎨",
-    techStack: ["React", "Tailwind CSS", "Figma", "Tokens Studio"],
-    highlights: ["20+ modules", "Theme support", "Design tokens"],
-    color: "green",
+    github: "https://github.com/nskowshik/NodeJsJWT",
+    link: undefined,
   },
   {
     title: "Dashboard Analytics",
@@ -52,6 +42,8 @@ const projects = [
     techStack: ["React", "Recharts", "TypeScript", "WebSocket"],
     highlights: ["Real-time updates", "Custom widgets", "Data export"],
     color: "yellow",
+    github: undefined,
+    link: undefined,
   },
 ];
 
@@ -88,12 +80,16 @@ const ProjectsSection = () => {
                   <div className="flex items-start justify-between">
                     <span className="text-4xl mb-2 block group-hover:animate-bounce-subtle">{project.emoji}</span>
                     <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {project?.github && (
                       <Button size="icon" variant="ghost" className="h-8 w-8">
                         <Github className="w-4 h-4" />
                       </Button>
+                    )}
+                    {project?.link && (
                       <Button size="icon" variant="ghost" className="h-8 w-8">
                         <ExternalLink className="w-4 h-4" />
                       </Button>
+                    )}
                     </div>
                   </div>
                   <CardTitle className="text-xl">{project.title}</CardTitle>
