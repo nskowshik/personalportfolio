@@ -15,22 +15,54 @@ interface MediumPost {
 
 
 
+const fetchWithRetry = async (url: string, retries = 3, delay = 2000): Promise<any> => {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            // Check if feed is being processed
+            if (data.status === 'error' && data.message?.includes('being processed')) {
+                console.log(`Feed processing, retry ${i + 1}/${retries}...`);
+                if (i < retries - 1) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    continue;
+                }
+                throw new Error('Feed is still being processed after retries');
+            }
+            
+            // Check for other errors
+            if (data.status === 'error') {
+                throw new Error(data.message || 'RSS2JSON API error');
+            }
+            
+            return data;
+        } catch (error) {
+            if (i === retries - 1) throw error;
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+    }
+};
+
 export const fetchMediumPosts = async (): Promise<MediumPost[]> => {
     try {
         // Use RSS2JSON API to convert Medium RSS feed to JSON
-        const response = await fetch(
+        // Add retry logic for feed processing errors
+        const data = await fetchWithRetry(
             `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@aathins5`
         );
         
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
         if (!data.items || !Array.isArray(data.items)) {
+            console.warn('No items found in RSS feed');
             return [];
         }
+        
+        console.log(`Successfully fetched ${data.items.length} Medium posts`);
         
         // Transform Medium posts to match BlogPost interface
         return data.items.map((item: any, index: number) => {
