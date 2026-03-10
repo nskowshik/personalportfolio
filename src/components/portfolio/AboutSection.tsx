@@ -61,7 +61,7 @@ const AboutSection = () => {
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-primary/10">
                     <Briefcase className="w-5 h-5 text-primary" />
-                    <span className="font-medium">5+ Years Experience</span>
+                    <span className="font-medium">6+ Years Experience</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/10">
                     <GraduationCap className="w-5 h-5 text-secondary" />
@@ -69,7 +69,7 @@ const AboutSection = () => {
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/10">
                     <Heart className="w-5 h-5 text-accent" />
-                    <span className="font-medium">React Enthusiast</span>
+                    <span className="font-medium">JS Enthusiast</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-pink/10">
                     <span className="text-xl">🎯</span>

@@ -81,12 +81,12 @@ const ProjectsSection = () => {
                     <span className="text-4xl mb-2 block group-hover:animate-bounce-subtle">{project.emoji}</span>
                     <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     {project?.github && (
-                      <Button size="icon" variant="ghost" className="h-8 w-8">
+                      <Button size="icon" variant="ghost" className="h-8 w-8" onClick={() => window.open(project.github, '_blank')}>
                         <Github className="w-4 h-4" />
                       </Button>
                     )}
                     {project?.link && (
-                      <Button size="icon" variant="ghost" className="h-8 w-8">
+                      <Button size="icon" variant="ghost" className="h-8 w-8" onClick={() => window.open(project.link, '_blank')}>
                         <ExternalLink className="w-4 h-4" />
                       </Button>
                     )}
