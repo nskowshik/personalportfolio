@@ -131,9 +131,9 @@ const HeroSection = () => {
 
         {/* Scroll indicator */}
         <motion.div 
-          className="hidden sm:block absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+          className="hidden md:block absolute bottom-[-100px] left-1/2 -translate-x-1/2 z-20"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
+          animate={{ opacity: 1, y: [0, 15, 0] }}
           transition={{ delay: 1.5, y: { duration: 2, repeat: Infinity } }}
         >
           <button 

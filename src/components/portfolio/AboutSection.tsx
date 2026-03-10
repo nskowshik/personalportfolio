@@ -4,7 +4,7 @@ import { GraduationCap, Heart, MapPin, Briefcase } from "lucide-react";
 
 const funFacts = [
   { emoji: "🎓", text: "B.E. in Electrical Engineering from Anna University" },
-  { emoji: "💼", text: "5+ years building scalable React applications" },
+  { emoji: "💼", text: "6+ years building scalable React applications" },
   { emoji: "🏗️", text: "Architected component libraries used in multiple products" },
   { emoji: "🎨", text: "Passionate about solving complex problems with elegant solutions" },
   { emoji: "🧘", text: "Mindfulness enthusiast & mentor" },

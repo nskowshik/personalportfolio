@@ -4,7 +4,7 @@ import { GraduationCap, Heart, MapPin, Briefcase } from "lucide-react";
 
 const funFacts = [
   { emoji: "🎓", text: "B.E. in Electrical Engineering from Anna University" },
-  { emoji: "💼", text: "5+ years building scalable React applications" },
+  { emoji: "💼", text: "6+ years building scalable React applications" },
   { emoji: "🏗️", text: "Architected component libraries used by 50+ engineers" },
   { emoji: "🎨", text: "Passionate about pixel-perfect UI & great DX" },
   { emoji: "🧘", text: "Mindfulness enthusiast & mentor" },
@@ -61,7 +61,7 @@ const AboutSection = () => {
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-primary/10">
                     <Briefcase className="w-5 h-5 text-primary" />
-                    <span className="font-medium">5+ Years Experience</span>
+                    <span className="font-medium">6+ Years Experience</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/10">
                     <GraduationCap className="w-5 h-5 text-secondary" />
