@@ -174,9 +174,9 @@ const ContactSection = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 }}
-                      className="flex items-center justify-start gap-3 p-3 rounded-xl bg-purple-200 hover:bg-purple-300 transition-all group text-left"
+                      className="flex items-center justify-start gap-3 p-3 rounded-xl bg-purple-200 dark:bg-purple-800 hover:bg-purple-300 transition-all group text-left"
                     >
-                      <Instagram className="w-5 h-5 text-purple-700 group-hover:scale-110 transition-transform flex-shrink-0" />
+                      <Instagram className="w-5 h-5 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform flex-shrink-0" />
                       <div>
                         <p className="text-sm text-muted-foreground">
                           Instagram
