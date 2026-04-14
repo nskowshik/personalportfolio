@@ -60,10 +60,10 @@ const AboutSection = () => {
             <Button
               size="sm"
               variant="ghost"
-              className="text-sm px-4 py-2 hover-lift"
+              className="text-sm font-semibold px-4 py-2 hover-lift"
               onClick={handleDownloadResume}
             >
-              Resume
+              ✍️ Resume
             </Button>
           </motion.div>
         </motion.div>
@@ -78,7 +78,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Card className="glass overflow-hidden hover-lift">
-              <CardContent className="p-8">
+              <CardContent className="px-8 py-10">
                 <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
                   {/* Avatar placeholder */}
                   <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary via-pink to-accent flex items-center justify-center text-5xl flex-shrink-0 animate-pulse-glow">

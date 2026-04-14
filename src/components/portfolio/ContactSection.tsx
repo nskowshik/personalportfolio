@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Linkedin, Github, MapPin, Send, Code } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Linkedin,
+  Github,
+  MapPin,
+  Send,
+  Code,
+  Instagram,
+} from "lucide-react";
 
 const contactInfo = [
   {
@@ -38,7 +47,7 @@ const contactInfo = [
     value: "Check my solutions",
     href: "https://leetcode.com/u/aathins5/",
     color: "orange",
-  }
+  },
 ];
 
 const ContactSection = () => {
@@ -56,105 +65,205 @@ const ContactSection = () => {
             Let's Connect <span className="inline-block">📬</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you!
+            Have a project in mind or just want to chat? I'd love to hear from
+            you!
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-2xl font-bold mb-2">Get in Touch</h3>
+            <p className="text-muted-foreground">
+              Choose your preferred way to connect
+            </p>
+          </motion.div>
+
           <Card className="glass overflow-hidden">
-            <CardContent className="p-0">
-              <div className="grid md:grid-cols-2">
-                {/* Contact info side */}
-                <div className="p-8 md:p-10 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div className="flex items-center gap-2 mb-6">
-                      <MapPin className="w-5 h-5 text-primary" />
-                      <span className="text-muted-foreground">Chennai, India 🇮🇳</span>
-                    </div>
-
-                    <h3 className="text-2xl font-bold mb-8">Get in Touch 👋</h3>
-
-                    <div className="space-y-6">
-                      {contactInfo.map((contact, index) => (
-                        <motion.a
-                          key={contact.label}
-                          href={contact.href}
-                          target={contact.href.startsWith("http") ? "_blank" : undefined}
-                          rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.1 * index }}
-                          className="flex items-center gap-4 p-4 rounded-xl bg-card/50 hover:bg-card hover-lift group transition-all"
-                        >
-                          <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                            contact.color === "primary" ? "bg-primary/20 text-primary" :
-                            contact.color === "secondary" ? "bg-secondary/20 text-secondary" :
-                            contact.color === "accent" ? "bg-accent/20 text-accent" :
-                            "bg-pink/20 text-pink"
-                          } group-hover:scale-110 transition-transform`}>
-                            <contact.icon className="w-5 h-5" />
-                          </div>
-                          <div>
-                            <p className="text-sm text-muted-foreground">{contact.label}</p>
-                            <p className="font-medium">{contact.value}</p>
-                          </div>
-                        </motion.a>
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* CTA side */}
-                <div className="p-8 md:p-10 flex flex-col justify-center items-center text-center">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <span className="text-6xl mb-6 block">🚀</span>
-                    <h3 className="text-2xl font-bold mb-4">Ready to work together?</h3>
-                    <p className="text-muted-foreground mb-8">
-                      I'm always excited to work on new projects and collaborate with amazing people.
-                    </p>
-                    <Button 
-                      size="lg" 
-                      className="text-lg px-8 py-6 hover-lift"
-                      onClick={() => window.location.href = "mailto:aathins5@gmail.com"}
-                    >
-                      <Send className="w-5 h-5 mr-2" />
-                      Send me an email
-                    </Button>
-
-                    <div className="mt-8 pt-8 border-t border-border">
-                      <p className="text-sm text-muted-foreground mb-4">Or find me on</p>
-                      <div className="flex justify-center gap-4">
-                        <Button 
-                          size="icon" 
-                          variant="outline" 
-                          className="rounded-full hover-lift"
-                          onClick={() => window.open("https://www.linkedin.com/in/kowshik-n-s-82b530161", "_blank")}
-                        >
-                          <Linkedin className="w-5 h-5" />
-                        </Button>
-                        <Button 
-                          size="icon" 
-                          variant="outline" 
-                          className="rounded-full hover-lift"
-                          onClick={() => window.open("https://github.com/nskowshik", "_blank")}
-                        >
-                          <Github className="w-5 h-5" />
-                        </Button>
+            <CardContent className="p-8 md:p-12">
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* Location & Availability */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-center md:text-left"
+                >
+                  <div className="space-y-6">
+                    <div className="flex items-center justify-center md:justify-start gap-3 p-4 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10">
+                      <MapPin className="w-6 h-6 text-primary" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">
+                          Based in
+                        </p>
+                        <p className="font-medium">Chennai, India</p>
                       </div>
                     </div>
-                  </motion.div>
-                </div>
+
+                    <div className="p-4 rounded-xl bg-gradient-to-r from-accent/10 to-pink/10">
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Currently open to
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-primary/20 text-primary rounded-lg text-sm font-medium">
+                          Freelance
+                        </span>
+                        <span className="px-3 py-1 bg-secondary/20 text-secondary rounded-lg text-sm font-medium">
+                          Full-time
+                        </span>
+                        <span className="px-3 py-1 bg-accent/20 text-accent rounded-lg text-sm font-medium">
+                          Consulting
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Primary Contact Methods */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-center"
+                >
+                  <div className="space-y-3">
+                    <motion.a
+                      href="mailto:aathins5@gmail.com"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                      className="flex items-center justify-start gap-3 p-3 rounded-xl bg-primary/10 hover:bg-primary/20 transition-all group text-left"
+                    >
+                      <Mail className="w-5 h-5 text-primary group-hover:scale-110 transition-transform flex-shrink-0" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Email</p>
+                        <p className="font-medium text-sm">
+                          aathins5@gmail.com
+                        </p>
+                      </div>
+                    </motion.a>
+
+                    <motion.a
+                      href="tel:+918124547978"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                      className="flex items-center justify-start gap-3 p-3 rounded-xl bg-secondary/10 hover:bg-secondary/20 transition-all group text-left"
+                    >
+                      <Phone className="w-5 h-5 text-secondary group-hover:scale-110 transition-transform flex-shrink-0" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Phone</p>
+                        <p className="font-medium text-sm">+91 81245 47978</p>
+                      </div>
+                    </motion.a>
+
+                    <motion.a
+                      href="https://www.instagram.com/_aathi_23_12"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                      className="flex items-center justify-start gap-3 p-3 rounded-xl bg-purple-200 hover:bg-purple-300 transition-all group text-left"
+                    >
+                      <Instagram className="w-5 h-5 text-purple-700 group-hover:scale-110 transition-transform flex-shrink-0" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">
+                          Instagram
+                        </p>
+                        <p className="font-medium text-sm">Follow</p>
+                      </div>
+                    </motion.a>
+                  </div>
+                </motion.div>
+
+                {/* Social & Professional Links */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-center"
+                >
+                  <div className="space-y-3">
+                    <motion.a
+                      href="https://linkedin.com/in/kowshik-n-s-82b530161"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                      className="flex items-center justify-start gap-3 p-3 rounded-xl bg-accent/10 hover:bg-accent/20 transition-all group text-left"
+                    >
+                      <Linkedin className="w-5 h-5 text-accent group-hover:scale-110 transition-transform flex-shrink-0" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">
+                          LinkedIn
+                        </p>
+                        <p className="font-medium text-sm">Connect</p>
+                      </div>
+                    </motion.a>
+
+                    <motion.a
+                      href="https://github.com/nskowshik"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                      className="flex items-center justify-start gap-3 p-3 rounded-xl bg-pink/10 hover:bg-pink/20 transition-all group text-left"
+                    >
+                      <Github className="w-5 h-5 text-pink group-hover:scale-110 transition-transform flex-shrink-0" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">GitHub</p>
+                        <p className="font-medium text-sm">View Repos</p>
+                      </div>
+                    </motion.a>
+
+                    <motion.a
+                      href="https://leetcode.com/u/aathins5"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 }}
+                      className="flex items-center justify-start gap-3 p-3 rounded-xl transition-all group text-left"
+                      style={{ backgroundColor: "rgba(250, 204, 21, 0.1)" }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.backgroundColor =
+                          "rgba(250, 204, 21, 0.2)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.backgroundColor =
+                          "rgba(250, 204, 21, 0.1)")
+                      }
+                    >
+                      <Code
+                        className="w-5 h-5 group-hover:scale-110 transition-transform flex-shrink-0"
+                        style={{ color: "#f59e0b" }}
+                      />
+                      <div>
+                        <p className="text-sm text-muted-foreground">
+                          LeetCode
+                        </p>
+                        <p className="font-medium text-sm">Solutions</p>
+                      </div>
+                    </motion.a>
+                  </div>
+                </motion.div>
               </div>
             </CardContent>
           </Card>
