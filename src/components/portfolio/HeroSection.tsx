@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Code2, Sparkles, Zap } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 const FloatingIcon = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div
@@ -26,34 +26,28 @@ const HeroSection = () => {
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-        {/* Floating decorative elements */}
-        <FloatingIcon className="top-20 left-4 md:left-20 opacity-50 md:opacity-100" delay={0.2}>
-          <div className="w-12 h-12 md:w-24 md:h-24 rounded-2xl bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/30">
-            <Code2 className="w-6 h-6 md:w-12 md:h-12 text-primary" />
+        {/* Skill-Based Floating Emojis - Closer to Content */}
+        <FloatingIcon className="hidden lg:block top-48 left-8 md:left-80 opacity-30 md:opacity-60" delay={0.2}>
+          <div className="w-14 h-14 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/30">
+            <span className="text-lg md:text-2xl">⚛️</span>
           </div>
         </FloatingIcon>
 
-        <FloatingIcon className="top-32 right-4 md:right-32 opacity-50 md:opacity-100" delay={0.4}>
-          <div className="w-10 h-10 md:w-20 md:h-20 rounded-full bg-secondary/20 backdrop-blur-sm flex items-center justify-center border border-secondary/30">
-            <span className="text-xl md:text-4xl">⚛️</span>
+        <FloatingIcon className="hidden lg:block top-48 right-8 md:right-60 opacity-30 md:opacity-60" delay={0.4}>
+          <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-secondary/20 backdrop-blur-sm flex items-center justify-center border border-secondary/30">
+            <span className="text-lg md:text-2xl">🗄️</span>
           </div>
         </FloatingIcon>
 
-        <FloatingIcon className="hidden sm:block bottom-40 left-20 md:left-40" delay={0.6}>
-          <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-accent/20 backdrop-blur-sm flex items-center justify-center border border-accent/30">
-            <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-accent" />
+        <FloatingIcon className="hidden lg:block bottom-32 left-8 md:left-60 opacity-30 md:opacity-60" delay={0.6}>
+          <div className="w-16 h-16 rounded-xl bg-accent/20 backdrop-blur-sm flex items-center justify-center border border-accent/30">
+            <span className="text-lg md:text-2xl">🚀</span>
           </div>
         </FloatingIcon>
 
-        <FloatingIcon className="hidden sm:block bottom-32 right-16 md:right-48" delay={0.8}>
-          <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg bg-pink/20 backdrop-blur-sm flex items-center justify-center border border-pink/30">
-            <span className="text-xl md:text-2xl">💻</span>
-          </div>
-        </FloatingIcon>
-
-        <FloatingIcon className="hidden md:block top-1/2 left-8 md:left-16" delay={1}>
-          <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-yellow/20 backdrop-blur-sm flex items-center justify-center border border-yellow/30">
-            <Zap className="w-4 h-4 md:w-6 md:h-6 text-yellow" />
+        <FloatingIcon className="hidden lg:block bottom-32 right-8 md:right-80 opacity-30 md:opacity-60" delay={0.8}>
+          <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-pink/20 backdrop-blur-sm flex items-center justify-center border border-pink/30">
+            <span className="text-lg md:text-2xl">☁️</span>
           </div>
         </FloatingIcon>
 
@@ -91,7 +85,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
             >
               <span className="text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground">
-                Senior Frontend Engineer
+                Senior Full-Stack Developer
               </span>
               <span className="text-2xl md:text-3xl">🚀</span>
             </motion.div>
@@ -102,8 +96,9 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
             >
-              Crafting delightful web experiences with <span className="text-primary font-semibold">React</span>, 
-              <span className="text-secondary font-semibold"> TypeScript</span>, and a sprinkle of ✨ magic for 6+ years in Software Development
+              Building end-to-end web solutions with <span className="text-primary font-semibold">React</span>, 
+              <span className="text-green-600 font-semibold"> Node.js</span>, 
+              <span className="text-secondary font-semibold"> TypeScript</span>, and cloud deployment for 6+ years
             </motion.p>
 
             <motion.div 

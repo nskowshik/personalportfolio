@@ -17,6 +17,7 @@ const experiences = [
     location: "Chennai, India",
     emoji: "🚀",
     color: "primary",
+    companyLink: "https://superops.ai",
     techStack: [
       "React.js",
       "TypeScript",
@@ -41,6 +42,7 @@ const experiences = [
     location: "Chennai, India",
     emoji: "💻",
     color: "secondary",
+    companyLink: "https://superops.ai",
     techStack: ["React.js", "JavaScript", "Redux", "CSS", "HTML5"],
     achievements: [
       "Built reusable components used across 3+ teams",
@@ -55,6 +57,7 @@ const experiences = [
     location: "Tirunelveli, India",
     emoji: "🌱",
     color: "accent",
+    companyLink: "https://gove.co",
     techStack: ["React.js", "JavaScript", "REST APIs", "CSS"],
     achievements: [
       "Developed user-facing features for web applications",
@@ -88,7 +91,8 @@ const ExperienceSection = () => {
           {/* Vertical line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent" />
 
-          {experiences.map((exp, index) => (
+          <Accordion type="single" collapsible className="w-full">
+            {experiences.map((exp, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -117,7 +121,14 @@ const ExperienceSection = () => {
                       <CardTitle className="text-xl">{exp.role}</CardTitle>
                       <div className="flex items-center gap-1 text-muted-foreground mt-1 flex-wrap">
                         <Building2 className="w-4 h-4" />
-                        <span className="font-medium">{exp.company}</span>
+                        <a 
+                          href={exp.companyLink}
+                          className="font-medium hover:text-primary transition-colors underline-offset-4 hover:underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {exp.company}
+                        </a>
                         <span>({exp.period})</span>
                       </div>
                     </div>
@@ -136,8 +147,7 @@ const ExperienceSection = () => {
                   </div>
 
                   {/* Achievements accordion */}
-                  <Accordion type="single" collapsible >
-                    <AccordionItem value="achievements" className="border-none">
+                  <AccordionItem value={`achievements-${index}`} className="border-none">
                       <AccordionTrigger
                         className={`text-sm font-medium ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                       >
@@ -161,11 +171,11 @@ const ExperienceSection = () => {
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
-                  </Accordion>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
+          </Accordion>
         </div>
       </div>
     </section>

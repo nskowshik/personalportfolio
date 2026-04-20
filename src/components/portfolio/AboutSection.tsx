@@ -6,21 +6,20 @@ import {
   Heart,
   MapPin,
   Briefcase,
-  Download,
 } from "lucide-react";
 
 const funFacts = [
-  { emoji: "🎓", text: "B.E. in Electrical Engineering from Anna University" },
-  { emoji: "💼", text: "6+ years building scalable React applications" },
+  { emoji: "🎓", text: "B.E. in Electrical Engineering" },
+  { emoji: "💼", text: "6+ years building end-to-end web applications" },
   {
     emoji: "🏗️",
-    text: "Architected component libraries used in multiple products",
+    text: "Full-stack architect with expertise in React, Node.js, and cloud deployment",
   },
   {
     emoji: "🎨",
-    text: "Passionate about solving complex problems with elegant solutions",
+    text: "Passionate about scalable solutions from database to UI",
   },
-  { emoji: "🧘", text: "Mindfulness enthusiast & mentor" },
+  { emoji: "🚀", text: "Deployed multiple production applications on cloud platforms" },
 ];
 
 const AboutSection = () => {
@@ -47,8 +46,8 @@ const AboutSection = () => {
             About Me <span className="inline-block animate-wiggle">👋</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From circuits to React components - my journey of transforming ideas
-            into interactive experiences
+            From circuits to cloud architecture - my journey of building complete
+            web solutions from database to deployment
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -81,7 +80,7 @@ const AboutSection = () => {
               <CardContent className="px-8 py-10">
                 <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
                   {/* Avatar placeholder */}
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary via-pink to-accent flex items-center justify-center text-5xl flex-shrink-0 animate-pulse-glow">
+                  <div className="w-32 h-32 hover:scale-110 transition-transform duration-300 rounded-full bg-gradient-to-br from-primary via-pink to-accent flex items-center justify-center text-5xl flex-shrink-0 animate-pulse-glow">
                     <img
                       src="/profile.png"
                       alt="Kowshik Sudarsan"
@@ -97,11 +96,11 @@ const AboutSection = () => {
                       <MapPin className="w-4 h-4" /> Chennai, India 🇮🇳
                     </p>
                     <p className="text-foreground leading-relaxed">
-                      I'm a passionate frontend engineer who loves turning
-                      complex problems into elegant, user-friendly interfaces.
+                      I'm a passionate full-stack developer who loves building
+                      complete web solutions from database design to responsive UI.
                       With a background in Electrical Engineering, I bring an
-                      analytical approach to building performant web
-                      applications that users love to interact with.
+                      analytical approach to architecting scalable applications
+                      that perform exceptionally well across the entire stack.
                     </p>
                   </div>
                 </div>
@@ -117,11 +116,11 @@ const AboutSection = () => {
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/10">
                     <Heart className="w-5 h-5 text-accent" />
-                    <span className="font-medium">JS Enthusiast</span>
+                    <span className="font-medium">Full-Stack Dev</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-pink/10">
                     <span className="text-xl">🎯</span>
-                    <span className="font-medium">UI Architect</span>
+                    <span className="font-medium">Cloud Architect</span>
                   </div>
                 </div>
               </CardContent>
