@@ -39,6 +39,7 @@ import {
   Cloud,
   Target,
   Layers,
+  CheckCircle,
 } from "lucide-react";
 
 // Comprehensive skills from both files
@@ -75,14 +76,13 @@ const skillCategories = [
     color: "secondary",
     skills: [
       { name: "Component Architecture", icon: Layout, color: "#3B82F6" },
-      { name: "Design Systems", icon: Target, color: "#EC4899" },
+      { name: "System Design", icon: Cpu, color: "#64748B" },
       { name: "Performance Optimization", icon: Zap, color: "#F59E0B" },
       { name: "Code Review", icon: Eye, color: "#6366F1" },
+      { name: "WCAG Compliance", icon: CheckCircle, color: "#EF4444" },
       { name: "Testing (Jest/RTL)", icon: SiTestcafe, color: "#9933CC" },
-      { name: "Full-Stack Architecture", icon: Layers, color: "#8B5CF6" },
       { name: "API Development", icon: Plug, color: "#14B8A6" },
       { name: "Cloud Deployment", icon: Cloud, color: "#06B6D4" },
-      { name: "System Design", icon: Cpu, color: "#64748B" },
       { name: "Security Best Practices", icon: Shield, color: "#EF4444" },
       { name: "Microservices", icon: Blocks, color: "#F97316" },
     ],
