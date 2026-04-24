@@ -1,115 +1,45 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
-  SiReact, SiTypescript, SiJavascript, SiRedux, SiHtml5, 
-  SiNodedotjs, SiPostgresql, SiExpress, SiMongodb, SiGraphql,
-  SiGit, SiGithub, SiFigma, SiJira, SiPostman, SiGooglechrome,
-  SiNpm, SiSlack, SiLinear, SiVscodium, SiRailway,
-  SiTestcafe} from "react-icons/si";
-import { 
-  Layout, Users, Code2, Cpu, Database,
-  Server, Shield, Blocks, Zap, Eye, 
-  Plug, Cloud, Target, Layers
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiRedux,
+  SiHtml5,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiGraphql,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiPostman,
+  SiGooglechrome,
+  SiNpm,
+  SiSlack,
+  SiLinear,
+  SiVscodium,
+  SiTestcafe,
+  SiSpring,
+  SiSocketdotio,
+  SiMixpanel,
+} from "react-icons/si";
+import {
+  Layout,
+  Users,
+  Cpu,
+  Database,
+  Server,
+  Shield,
+  Blocks,
+  Zap,
+  Eye,
+  Plug,
+  Cloud,
+  Target,
+  Layers,
 } from "lucide-react";
-
-// Icon mapping for skills
-const getSkillIcon = (skillName: string) => {
-  const iconMap: Record<string, any> = {
-    // Frontend
-    "React.js": SiReact,
-    "TypeScript": SiTypescript,
-    "JavaScript": SiJavascript,
-    "Redux": SiRedux,
-    "HTML5/CSS3": SiHtml5,
-    // Backend
-    "Node.js": SiNodedotjs,
-    "REST APIs": Server,
-    "PostgreSQL": SiPostgresql,
-    "Express.js": SiExpress,
-    "MongoDB": SiMongodb,
-    "GraphQL": SiGraphql,
-    // Tools & Platforms
-    "VS Code": SiVscodium,
-    "GitHub": SiGithub,
-    "Figma": SiFigma,
-    "Jira": SiJira,
-    "Postman": SiPostman,
-    "Chrome DevTools": SiGooglechrome,
-    "npm/yarn": SiNpm,
-    "MongoDB Atlas": SiMongodb,
-    "Railway": SiRailway,
-    "Slack": SiSlack,
-    "Linear": SiLinear,
-    // Professional Skills
-    "Team Mentoring": Users,
-    "Agile/Scrum": Target,
-    "Git/Version Control": SiGit,
-    // Development Practices
-    "Component Architecture": Layout,
-    "Design Systems": Target,
-    "Performance Optimization": Zap,
-    "Code Review": Eye,
-    "Testing (Jest/RTL)": SiTestcafe,
-    "Full-Stack Architecture": Layers,
-    "Database Design": Database,
-    "API Development": Plug,
-    "Cloud Deployment": Cloud,
-    "System Design": Cpu,
-    "Security Best Practices": Shield,
-    "Microservices": Blocks,
-  };
-  return iconMap[skillName] || Code2;
-};
-
-// Color mapping for technology icons
-const getSkillIconColor = (skillName: string): string => {
-  const colorMap: Record<string, string> = {
-    // Frontend
-    "React.js": "#61DAFB",
-    "TypeScript": "#3178C6",
-    "JavaScript": "#F7DF1E",
-    "Redux": "#764ABC",
-    "HTML5/CSS3": "#E34F26",
-    // Backend
-    "Node.js": "#339933",
-    "REST APIs": "#00C7B7",
-    "PostgreSQL": "#4169E1",
-    "Express.js": "#000000",
-    "MongoDB": "#47A248",
-    "GraphQL": "#E535AB",
-    // Tools & Platforms
-    "VS Code": "#007ACC",
-    "GitHub": "#181717",
-    "Figma": "#F24E1E",
-    "Jira": "#0052CC",
-    "Postman": "#FF6C37",
-    "Chrome DevTools": "#4285F4",
-    "npm/yarn": "#CB3837",
-    "MongoDB Atlas": "#47A248",
-    "Railway": "#9B59B6",
-    "Slack": "#4A154B",
-    "Linear": "#5E6AD2",
-    // Professional Skills
-    "Team Mentoring": "#8B5CF6",
-    "Agile/Scrum": "#10B981",
-    "Git/Version Control": "#F05032",
-    // Development Practices
-    "Component Architecture": "#3B82F6",
-    "Design Systems": "#EC4899",
-    "Performance Optimization": "#F59E0B",
-    "Code Review": "#6366F1",
-    "Testing (Jest/RTL)": "#9933CC",
-    "Full-Stack Architecture": "#8B5CF6",
-    "Database Design": "#0EA5E9",
-    "API Development": "#14B8A6",
-    "Cloud Deployment": "#06B6D4",
-    "System Design": "#64748B",
-    "Security Best Practices": "#EF4444",
-    "Microservices": "#F97316",
-  };
-  return colorMap[skillName] || "#6366F1";
-};
 
 // Comprehensive skills from both files
 const skillCategories = [
@@ -118,122 +48,116 @@ const skillCategories = [
     emoji: "🎨",
     color: "primary",
     skills: [
-      { name: "React.js" },
-      { name: "TypeScript" },
-      { name: "JavaScript" },
-      { name: "Redux" },
-      { name: "HTML5/CSS3" },
-    ]
+      { name: "React.js", icon: SiReact, color: "#61DAFB" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "Redux", icon: SiRedux, color: "#764ABC" },
+      { name: "HTML5/CSS3", icon: SiHtml5, color: "#E34F26" },
+    ],
   },
   {
     title: "Backend Development",
     emoji: "⚙️",
     color: "green",
     skills: [
-      { name: "Node.js"  },
-      { name: "REST APIs" },
-      { name: "Express.js" },
-      { name: "MongoDB" },
-      { name: "GraphQL" },
-    ]
+      { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+      { name: "REST APIs", icon: Server, color: "#00C7B7" },
+      { name: "Express.js", icon: SiExpress, color: "#000000" },
+      { name: "Spring Boot", icon: SiSpring, color: "#6DB33F" },
+      { name: "Websocket", icon: SiSocketdotio, color: "#00C7B7" },
+      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "GraphQL", icon: SiGraphql, color: "#E535AB" },
+    ],
   },
   {
     title: "Development Practices",
     emoji: "🛠️",
     color: "secondary",
     skills: [
-      { name: "Component Architecture" },
-      { name: "Design Systems" },
-      { name: "Performance Optimization" },
-      { name: "Code Review" },
-      { name: "Testing (Jest/RTL)" },
-      { name: "Full-Stack Architecture" },
-      { name: "API Development" },
-      { name: "Cloud Deployment" },
-      { name: "System Design" },
-      { name: "Security Best Practices" },
-      { name: "Microservices" },
-    ]
+      { name: "Component Architecture", icon: Layout, color: "#3B82F6" },
+      { name: "Design Systems", icon: Target, color: "#EC4899" },
+      { name: "Performance Optimization", icon: Zap, color: "#F59E0B" },
+      { name: "Code Review", icon: Eye, color: "#6366F1" },
+      { name: "Testing (Jest/RTL)", icon: SiTestcafe, color: "#9933CC" },
+      { name: "Full-Stack Architecture", icon: Layers, color: "#8B5CF6" },
+      { name: "API Development", icon: Plug, color: "#14B8A6" },
+      { name: "Cloud Deployment", icon: Cloud, color: "#06B6D4" },
+      { name: "System Design", icon: Cpu, color: "#64748B" },
+      { name: "Security Best Practices", icon: Shield, color: "#EF4444" },
+      { name: "Microservices", icon: Blocks, color: "#F97316" },
+    ],
   },
   {
     title: "Professional Skills",
     emoji: "💼",
     color: "accent",
     skills: [
-      { name: "Team Mentoring" },
-      { name: "Agile/Scrum" },
-      { name: "Git/Version Control" },
-    ]
+      { name: "Team Mentoring", icon: Users, color: "#8B5CF6" },
+      { name: "Agile/Scrum", icon: Target, color: "#10B981" },
+      { name: "Git/Version Control", icon: SiGit, color: "#F05032" },
+    ],
   },
   {
     title: "Tools & Platforms",
     emoji: "🔧",
     color: "yellow",
     skills: [
-      { name: "VS Code" },
-      { name: "GitHub" },
-      { name: "Figma" },
-      { name: "Postman" },
-      { name: "Chrome DevTools" },
-      { name: "npm/yarn" },
-      { name: "MongoDB Atlas" },
-      { name: "Slack" },
-      { name: "Linear" },
-    ]
-  }
+      { name: "VS Code", icon: SiVscodium, color: "#007ACC" },
+      { name: "GitHub", icon: SiGithub, color: "#181717" },
+      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+      { name: "Chrome DevTools", icon: SiGooglechrome, color: "#4285F4" },
+      { name: "npm/yarn", icon: SiNpm, color: "#CB3837" },
+      { name: "MongoDB Atlas", icon: SiMongodb, color: "#47A248" },
+      { name: "Slack", icon: SiSlack, color: "#4A154B" },
+      { name: "Linear", icon: SiLinear, color: "#5E6AD2" },
+      { name: "Mixpanel", icon: SiMixpanel, color: "#7F5AF0" },
+      { name: "Corologix", icon: Database, color: "#FF6B35" },
+    ],
+  },
 ];
 
-const SkillBar = ({ skill, index, showLevel = true }: { skill: { name: string; emoji: string; level?: number; color?: string }; index: number; showLevel?: boolean }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay: index * 0.1 }}
-    className="group"
-  >
-    <div className="flex items-center justify-between mb-2">
-      <span className="font-medium flex items-center gap-2">
-        <span className="text-xl">{skill.emoji}</span>
-        {skill.name}
-      </span>
-      {showLevel && skill.level && (
-        <span className="text-sm text-muted-foreground">{skill.level}%</span>
-      )}
-    </div>
-    {showLevel && skill.level && (
-      <div className="h-3 bg-muted rounded-full overflow-hidden">
-        <motion.div
-          className={`h-full rounded-full ${
-            skill.color === "primary" ? "bg-primary" :
-            skill.color === "secondary" ? "bg-secondary" :
-            skill.color === "accent" ? "bg-accent" :
-            skill.color === "yellow" ? "bg-yellow" :
-            skill.color === "green" ? "bg-green" :
-            skill.color === "pink" ? "bg-pink" :
-            skill.color === "blue" ? "bg-blue-400" :
-            skill.color === "orange" ? "bg-orange-500" :
-            skill.color === "cyan" ? "bg-cyan-500" :
-            "bg-primary"
-          }`}
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.3 + index * 0.1, ease: "easeOut" }}
-        />
-      </div>
-    )}
-  </motion.div>
-);
-
 const SkillsSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>(skillCategories[0].title);
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    skillCategories[0].title,
+  );
+  const [userInteracted, setUserInteracted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.5 });
 
   const selectCategory = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
+    setUserInteracted(true);
   };
 
+  // Auto-switch categories every 4 seconds when in view and user hasn't interacted
+  useEffect(() => {
+    if (!isInView) {
+      setUserInteracted(false);
+      return;
+    }
+
+    if (userInteracted) return;
+
+    const interval = setInterval(() => {
+      setSelectedCategory((prev) => {
+        const currentIndex = skillCategories.findIndex(
+          (cat) => cat.title === prev,
+        );
+        const nextIndex = (currentIndex + 1) % skillCategories.length;
+        return skillCategories[nextIndex].title;
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isInView, userInteracted]);
+
   return (
-    <section id="skills" className="section-padding bg-gradient-playful">
+    <section
+      ref={sectionRef}
+      id="skills"
+      className="section-padding bg-gradient-playful"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -243,10 +167,12 @@ const SkillsSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Skills <span className="inline-block animate-bounce-subtle">🛠️</span>
+            Skills{" "}
+            <span className="inline-block animate-bounce-subtle">🛠️</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive full-stack technologies and tools I use to build scalable web applications
+            Comprehensive full-stack technologies and tools I use to build
+            scalable web applications
           </p>
         </motion.div>
 
@@ -255,7 +181,7 @@ const SkillsSection = () => {
             <div className="space-y-6 lg:h-[520px] lg:overflow-y-auto">
               {skillCategories.map((category, categoryIndex) => {
                 const isSelected = selectedCategory === category.title;
-                
+
                 return (
                   <div key={category.title}>
                     <motion.div
@@ -265,8 +191,8 @@ const SkillsSection = () => {
                       transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                       className="rounded-lg border"
                     >
-                      <Card 
-                        className={`glass cursor-pointer hover:shadow-lg ${isSelected ? 'ring-1 ring-primary' : ''}`}
+                      <Card
+                        className={`glass cursor-pointer hover:shadow-lg ${isSelected ? "ring-1 ring-primary" : ""}`}
                         onClick={() => selectCategory(category.title)}
                       >
                         <CardContent className="p-6">
@@ -277,18 +203,21 @@ const SkillsSection = () => {
                             </h3>
                             <div className="flex items-center gap-2">
                               <span className="text-sm text-muted-foreground">
-                                {category.skills.length} {category.skills.length === 1 ? 'skill' : 'skills'}
+                                {category.skills.length}{" "}
+                                {category.skills.length === 1
+                                  ? "skill"
+                                  : "skills"}
                               </span>
                             </div>
                           </div>
                         </CardContent>
                       </Card>
                     </motion.div>
-                    
+
                     {isSelected && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
+                        animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         className="lg:hidden mt-4"
                       >
@@ -306,12 +235,15 @@ const SkillsSection = () => {
                                 >
                                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-primary/60 rounded-l-lg opacity-0 group-hover:opacity-100"></div>
                                   <div className="flex items-center gap-3">
-                                    {(() => {
-                                      const Icon = getSkillIcon(skill.name);
-                                      const color = getSkillIconColor(skill.name);
-                                      return <Icon className="w-8 h-8" style={{ color }} />;
-                                    })()}
-                                    <span className="font-medium">{skill.name}</span>
+                                    {skill.icon && (
+                                      <skill.icon
+                                        className="w-8 h-8"
+                                        style={{ color: skill.color }}
+                                      />
+                                    )}
+                                    <span className="font-medium">
+                                      {skill.name}
+                                    </span>
                                   </div>
                                 </motion.div>
                               ))}
@@ -337,7 +269,7 @@ const SkillsSection = () => {
                   <CardContent className="p-6 flex-1 flex flex-col">
                     <div className="grid grid-cols-2 gap-4 overflow-y-auto pr-2">
                       {skillCategories
-                        .find(category => category.title === selectedCategory)
+                        .find((category) => category.title === selectedCategory)
                         ?.skills.map((skill, skillIndex) => (
                           <motion.div
                             key={skill.name}
@@ -348,11 +280,12 @@ const SkillsSection = () => {
                             className="group relative bg-card/50 border border-primary/20 rounded-lg p-4 hover:border-primary/40 hover:shadow-lg"
                           >
                             <div className="flex items-center gap-3">
-                              {(() => {
-                                const Icon = getSkillIcon(skill.name);
-                                const color = getSkillIconColor(skill.name);
-                                return <Icon className="w-8 h-8" style={{ color }} />;
-                              })()}
+                              {skill.icon && (
+                                <skill.icon
+                                  className="w-8 h-8"
+                                  style={{ color: skill.color }}
+                                />
+                              )}
                               <span className="font-medium">{skill.name}</span>
                             </div>
                           </motion.div>
