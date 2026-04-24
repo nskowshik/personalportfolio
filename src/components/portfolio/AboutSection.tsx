@@ -25,8 +25,9 @@ const funFacts = [
 const AboutSection = () => {
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/resume.pdf";
+    link.href = "https://drive.google.com/file/d/1wc2rhE0lTX8Y_z6xptTBqGB7nZ2WNEeq/view?usp=drive_link";
     link.download = "Kowshik Sudarsan.pdf";
+    link.target = "_blank";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -56,14 +57,43 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-center mt-2 mb-2"
           >
-            <Button
-              size="sm"
-              variant="ghost"
-              className="text-sm font-semibold px-4 py-2 hover-lift"
-              onClick={handleDownloadResume}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative inline-block"
             >
-              ✍️ Resume
-            </Button>
+              <motion.div
+                className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary via-pink to-accent opacity-0 hover:opacity-100 transition-opacity duration-300 blur-sm"
+              />
+              <Button
+                size="sm"
+                variant="outline"
+                className="text-sm font-semibold px-4 py-2 relative bg-background hover:bg-background/90 border-2 border-primary hover:border-pink transition-colors duration-300"
+                onClick={handleDownloadResume}
+              >
+                <motion.span
+                  className="relative z-10"
+                  animate={{
+                    backgroundPosition: ["0%", "100%"],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "linear",
+                  }}
+                  style={{
+                    background: "linear-gradient(90deg, #8B5CF6, #EC4899, #8B5CF6)",
+                    backgroundSize: "200% auto",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  ✍️ Resume
+                </motion.span>
+              </Button>
+            </motion.div>
           </motion.div>
         </motion.div>
         {/* Download Resume CTA */}
