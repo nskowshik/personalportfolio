@@ -26,11 +26,11 @@ const projects = [
     title: "Real-time Chat Application",
     description:
       "Full-stack chat application with WebSocket support, private messaging, group chats, and message persistence.",
-    emoji: "�",
-    techStack: ["React", "Socket.io", "Node.js", "MongoDB", "Redis"],
+    emoji: "💭",
+    techStack: ["React", "WebSocket", "Node.js", "Svelte","Tailwind CSS", "Redis"],
     highlights: [
       "Real-time messaging",
-      "Socket.io",
+      "WebSocket",
       "Message history",
       "Online status",
     ],
@@ -40,8 +40,8 @@ const projects = [
     title: "Rich Text Editor",
     description: "Feature-rich WYSIWYG editor with real-time collaboration, formatting, and media support.",
     emoji: "📝",
-    techStack: ["React", "TypeScript", "Yjs", "YWebsocket"],
-    highlights: ["Real-time collaboration", "Formatting", "Media support", "Version control"],
+    techStack: ["React", "TypeScript", "Shadcn", "Optimistic Updates","Tailwind CSS"],
+    highlights: ["Real-time collaboration","TipTap", "Formatting", "Media support", "Version control"],
     color: "secondary",
     github: "https://github.com/nskowshik/tiptap_editor",
     link: "https://slasheditor.netlify.app/",
@@ -51,7 +51,7 @@ const projects = [
     description:
       "Business intelligence dashboard with real-time data visualization, custom reports, and automated insights.",
     emoji: "📊",
-    techStack: ["React", "Node.js", "PostgreSQL", "Chart.js", "WebSocket"],
+    techStack: ["React", "GraphQL", "PostgreSQL", "Echart", "WebSocket", "Responsive Grid Layout"],
     highlights: [
       "Real-time analytics",
       "Custom reports",
