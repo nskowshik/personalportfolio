@@ -64,7 +64,7 @@ const skillCategories = [
     skills: [
       { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
       { name: "REST APIs", icon: Server, color: "#00C7B7" },
-      { name: "Express.js", icon: SiExpress, color: "#000000" },
+      { name: "Express.js", icon: SiExpress, color: "#FFFFFF" },
       { name: "Websocket", icon: SiSocketdotio, color: "#00C7B7" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "GraphQL", icon: SiGraphql, color: "#E535AB" },
