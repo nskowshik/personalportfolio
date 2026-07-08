@@ -12,64 +12,113 @@ import { ExternalLink, Github, Layers } from "lucide-react";
 
 const projects = [
   {
-    title: "Component Library",
-    description:
-      "A comprehensive library of 150+ reusable React components with TypeScript, Storybook documentation, and full accessibility support.",
-    emoji: "📦",
-    techStack: ["React", "TypeScript", "Storybook", "CSS Modules"],
-    highlights: ["150+ components", "Used by 50+ engineers", "Shopify Polaris"],
-    color: "primary",
-    github: undefined,
-    link: undefined,
-  },
-  {
-    title: "Real-time Chat Application",
-    description:
-      "Full-stack chat application with WebSocket support, private messaging, group chats, and message persistence.",
-    emoji: "💭",
-    techStack: ["React", "WebSocket", "Node.js", "Svelte","Tailwind CSS", "Redis"],
-    highlights: [
-      "Real-time messaging",
-      "WebSocket",
-      "Message history",
-      "Online status",
-    ],
-    color: "secondary",
-  },
-  {
     title: "Rich Text Editor",
-    description: "Feature-rich WYSIWYG editor with real-time collaboration, formatting, and media support.",
+    description:
+      "A Notion-style rich text editor built with React and TypeScript by extending an MIT-licensed editor with custom extensions and reusable components.",
     emoji: "📝",
-    techStack: ["React", "TypeScript", "Shadcn", "Optimistic Updates","Tailwind CSS"],
-    highlights: ["Real-time collaboration","TipTap", "Formatting", "Media support", "Version control"],
-    color: "secondary",
+    techStack: [
+      "React",
+      "TypeScript",
+      "TipTap",
+      "SCSS",
+      "Vite"
+    ],
+    highlights: [
+      "Custom extensions",
+      "Reusable components",
+      "Rich formatting",
+      "Keyboard shortcuts"
+    ],
+    color: "primary",
     github: "https://github.com/nskowshik/tiptap_editor",
     link: "https://slasheditor.netlify.app/",
   },
+
+  {
+    title: "Real-time Chat Application",
+    description:
+      "A real-time chat application with WebSocket-based messaging, online presence, group conversations, and persistent chat history.",
+    emoji: "💬",
+    techStack: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "WebSocket",
+      "Redis",
+      "Tailwind CSS"
+    ],
+    highlights: [
+      "Real-time messaging",
+      "Group chat",
+      "Online presence",
+      "Message persistence"
+    ],
+    color: "secondary",
+  },
+
   {
     title: "Analytics Dashboard",
     description:
-      "Business intelligence dashboard with real-time data visualization, custom reports, and automated insights.",
+      "Interactive analytics dashboard with responsive charts, GraphQL APIs, filters, and real-time data updates.",
     emoji: "📊",
-    techStack: ["React", "GraphQL", "PostgreSQL", "Echart", "WebSocket", "Responsive Grid Layout"],
+    techStack: [
+      "React",
+      "GraphQL",
+      "ECharts",
+      "WebSocket",
+      "TypeScript"
+    ],
     highlights: [
-      "Real-time analytics",
-      "Custom reports",
-      "Data visualization",
-      "API integration",
+      "Real-time updates",
+      "Interactive charts",
+      "Advanced filters",
+      "Responsive layout"
     ],
     color: "yellow",
   },
-  {  title: "Store Management System",
-    description: "A full-featured store management system with real-time inventory tracking, order management, and reporting capabilities.",
-    emoji: "🔄",
-    techStack: ["Node JS", "MongoDB", "Express", "JWT"],
-    highlights: ["Inventory tracking", "Order management", "Customer details"],
+
+  {
+    title: "SSO & Admin Portal",
+    description:
+      "Secure administration portal implementing Keycloak SSO, role-based access control, and user management workflows.",
+    emoji: "🔐",
+    techStack: [
+      "React",
+      "TypeScript",
+      "Keycloak",
+      "REST API",
+      "SCSS"
+    ],
+    highlights: [
+      "SSO",
+      "RBAC",
+      "User management",
+      "Secure authentication"
+    ],
     color: "accent",
-    github: "https://github.com/nskowshik/NodeJsJWT",
-    link: undefined,
   },
-  
+
+  {
+    title: "Store Management System",
+    description:
+      "Full-stack inventory and order management application with secure JWT authentication and REST APIs.",
+    emoji: "🏪",
+    techStack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT"
+    ],
+    highlights: [
+      "Inventory management",
+      "Order tracking",
+      "REST APIs",
+      "JWT authentication"
+    ],
+    color: "secondary",
+    github: "https://github.com/nskowshik/NodeJsJWT",
+  }
 ];
 
 const ProjectsSection = () => {
